@@ -229,7 +229,7 @@ function Header() {
                                 </div>
                                 <span className="profile-username">
                                     <span className="op-7">Hi,</span>
-                                    <span className="fw-bold">Hizrian</span>
+                                    <span className="fw-bold">Jainam</span>
                                 </span>
                             </a>
                             <ul className="dropdown-menu dropdown-user animated fadeIn">
