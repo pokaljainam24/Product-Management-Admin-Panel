@@ -3,6 +3,8 @@ import Home from './pages/Home';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Form from './pages/Form';
 import Table from './pages/Table';
+import axios from 'axios';
+
 
 function App() {
   const [product, setProduct] = useState({});
@@ -13,11 +15,19 @@ function App() {
 
   const navigation = useNavigate();
 
-  useEffect(() => {
-    const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
-    setProducts(savedProducts);
-  }, []);
+  const URL = 'http://localhost:3000/product'
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const responce = await axios.get(URL);
+        setProducts(responce.data);
+      } catch (error) {
+        console.log('Error fetching products:', error);
+      }
+    }
+    fetchProduct();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, checked, files } = e.target;
@@ -75,41 +85,46 @@ function App() {
     return Object.keys(errors).length === 0;
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
       return;
     }
 
-    let updatedProducts;
-
-    if (product.id) {
-      updatedProducts = products.map((item) =>
-        item.id === product.id ? product : item
-      );
-      alert('Product updated successfully!');
-    } else {
-      updatedProducts = [...products, { ...product, id: Date.now() }];
-      alert('Product added successfully!');
+    try {
+      if (product.id) {
+        await axios.put(`${URL}/${product.id}`, product);
+        console.log('Product updated:', product);
+        const updatedProducts = products.map((p) => (p.id === product.id ? product : p));
+        setProducts(updatedProducts);
+      } else {
+        const response = await axios.post(URL, { ...product, id: Date.now() });
+        console.log('Product saved:', response.data);
+        setProduct(response.data);
+        setProducts([...products, response.data]);
+      }
+      setProduct({});
+      setWarehouse([]);
+      imgRef.current.value = '';
+    } catch (error) {
+      console.log('Error saving product:', error);
     }
-
-    setProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
-    setProduct({});
-    setWarehouse([]);
-    imgRef.current.value = '';
   };
-
 
   useEffect(() => {
     console.log('Products updated:', products);
   }, [products]);
 
-  const handleDelete = (id) => {
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${URL}/${id}`);
+      console.log('Product deleted:', id);
+      const updatedProducts = products.filter((product) => product.id !== id);
+      setProducts(updatedProducts);
+    } catch (error) {
+      console.log('Error deleting product:', error);
+    }
   };
 
   const handleEdit = (id) => {

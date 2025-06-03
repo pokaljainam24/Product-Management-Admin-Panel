@@ -130,6 +130,7 @@ function Table({ products, handleDelete, handleEdit }) {
                                                 <table id="add-row" className="display table table-striped table-hover">
                                                     <thead>
                                                         <tr>
+                                                            <th>#</th>
                                                             <th>Name</th>
                                                             <th>Price</th>
                                                             <th>Stock</th>
@@ -141,6 +142,7 @@ function Table({ products, handleDelete, handleEdit }) {
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
+                                                            <th>#</th>
                                                             <th>Name</th>
                                                             <th>Price</th>
                                                             <th>Stock</th>
@@ -152,8 +154,9 @@ function Table({ products, handleDelete, handleEdit }) {
                                                     </tfoot>
                                                     <tbody>
                                                         {
-                                                            products.map((item) => (
+                                                            products.map((item,ind) => (
                                                                 <tr key={item.id}>
+                                                                    <td>{ind + 1}</td>
                                                                     <td>{item.name}</td>
                                                                     <td>{item.price}</td>
                                                                     <td>{item.stock}</td>
