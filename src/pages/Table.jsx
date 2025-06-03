@@ -1,10 +1,8 @@
-import React from 'react'
-import Aside from '../components/Aside'
-import Header from '../components/Header'
+import React from "react";
+import Aside from "../components/Aside";
+import Header from "../components/Header";
 
-function Table({ products, handleDelete, handleEdit }) {
-    console.log('Products:', products);
-
+const Table = ({ productList, handleDelete, handleEdit }) => {
     return (
         <>
             <div className="wrapper">
@@ -17,7 +15,12 @@ function Table({ products, handleDelete, handleEdit }) {
                             {/* Logo Header */}
                             <div className="logo-header" data-background-color="dark">
                                 <a href="../index.html" className="logo">
-                                    <img src="../assets/img/kaiadmin/logo_light.svg" alt="navbar brand" className="navbar-brand" height={20} />
+                                    <img
+                                        src="../assets/img/kaiadmin/logo_light.svg"
+                                        alt="navbar brand"
+                                        className="navbar-brand"
+                                        height={20}
+                                    />
                                 </a>
                                 <div className="nav-toggle">
                                     <button className="btn btn-toggle toggle-sidebar">
@@ -67,7 +70,11 @@ function Table({ products, handleDelete, handleEdit }) {
                                         <div className="card-header">
                                             <div className="d-flex align-items-center">
                                                 <h4 className="card-title">Add Row</h4>
-                                                <button className="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addRowModal">
+                                                <button
+                                                    className="btn btn-primary btn-round ms-auto"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#addRowModal"
+                                                >
                                                     <i className="fa fa-plus" />
                                                     Add Row
                                                 </button>
@@ -75,7 +82,13 @@ function Table({ products, handleDelete, handleEdit }) {
                                         </div>
                                         <div className="card-body">
                                             {/* Modal */}
-                                            <div className="modal fade" id="addRowModal" tabIndex={-1} role="dialog" aria-hidden="true">
+                                            <div
+                                                className="modal fade"
+                                                id="addRowModal"
+                                                tabIndex={-1}
+                                                role="dialog"
+                                                aria-hidden="true"
+                                            >
                                                 <div className="modal-dialog" role="document">
                                                     <div className="modal-content">
                                                         <div className="modal-header border-0">
@@ -83,7 +96,12 @@ function Table({ products, handleDelete, handleEdit }) {
                                                                 <span className="fw-mediumbold"> New</span>
                                                                 <span className="fw-light"> Row </span>
                                                             </h5>
-                                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                            <button
+                                                                type="button"
+                                                                className="close"
+                                                                data-dismiss="modal"
+                                                                aria-label="Close"
+                                                            >
                                                                 <span aria-hidden="true">×</span>
                                                             </button>
                                                         </div>
@@ -97,29 +115,52 @@ function Table({ products, handleDelete, handleEdit }) {
                                                                     <div className="col-sm-12">
                                                                         <div className="form-group form-group-default">
                                                                             <label>Name</label>
-                                                                            <input id="addName" type="text" className="form-control" placeholder="fill name" />
+                                                                            <input
+                                                                                id="addName"
+                                                                                type="text"
+                                                                                className="form-control"
+                                                                                placeholder="fill name"
+                                                                            />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6 pe-0">
                                                                         <div className="form-group form-group-default">
                                                                             <label>Position</label>
-                                                                            <input id="addPosition" type="text" className="form-control" placeholder="fill position" />
+                                                                            <input
+                                                                                id="addPosition"
+                                                                                type="text"
+                                                                                className="form-control"
+                                                                                placeholder="fill position"
+                                                                            />
                                                                         </div>
                                                                     </div>
                                                                     <div className="col-md-6">
                                                                         <div className="form-group form-group-default">
                                                                             <label>Office</label>
-                                                                            <input id="addOffice" type="text" className="form-control" placeholder="fill office" />
+                                                                            <input
+                                                                                id="addOffice"
+                                                                                type="text"
+                                                                                className="form-control"
+                                                                                placeholder="fill office"
+                                                                            />
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                         <div className="modal-footer border-0">
-                                                            <button type="button" id="addRowButton" className="btn btn-primary">
+                                                            <button
+                                                                type="button"
+                                                                id="addRowButton"
+                                                                className="btn btn-primary"
+                                                            >
                                                                 Add
                                                             </button>
-                                                            <button type="button" className="btn btn-danger" data-dismiss="modal">
+                                                            <button
+                                                                type="button"
+                                                                className="btn btn-danger"
+                                                                data-dismiss="modal"
+                                                            >
                                                                 Close
                                                             </button>
                                                         </div>
@@ -127,55 +168,65 @@ function Table({ products, handleDelete, handleEdit }) {
                                                 </div>
                                             </div>
                                             <div className="table-responsive">
-                                                <table id="add-row" className="display table table-striped table-hover">
+                                                <table
+                                                    id="add-row"
+                                                    className="display table table-striped table-hover"
+                                                >
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>Price</th>
-                                                            <th>Stock</th>
-                                                            <th>Image</th>
-                                                            <th>Description</th>
-                                                            <th>Warehouse</th>
-                                                            <th style={{ width: '10%' }}>Action</th>
+                                                            <th>Product Name</th>
+                                                            <th>Product Stock</th>
+                                                            <th>Product Price</th>
+                                                            <th style={{ width: "15%"}}>Image</th>
+                                                            <th>Content</th>
+                                                            <th>Product Godwon</th>
+                                                            <th style={{ width: "10%" }}>Action</th>
                                                         </tr>
                                                     </thead>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>Price</th>
-                                                            <th>Stock</th>
-                                                            <th>Image</th>
-                                                            <th>Description</th>
-                                                            <th>Warehouse</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </tfoot>
                                                     <tbody>
-                                                        {
-                                                            products.map((item,ind) => (
-                                                                <tr key={item.id}>
-                                                                    <td>{ind + 1}</td>
-                                                                    <td>{item.name}</td>
-                                                                    <td>{item.price}</td>
-                                                                    <td>{item.stock}</td>
-                                                                    <td>{item.image && <img src={item.image.url} alt={item.image.name} width="100" />}</td>
-                                                                    <td>{item.discription}</td>
-                                                                    <td>{item.warehouse.join(', ')}</td>
-                                                                    <td>
-                                                                        <div className="form-button-action">
-                                                                            <button type="button" onClick={() => handleEdit(item.id)} className="btn btn-link btn-primary btn-lg">
-                                                                                <i className="fa fa-edit" />
-                                                                            </button>
-                                                                            <button type="button" onClick={() => handleDelete(item.id)} className="btn btn-link btn-danger">
-                                                                                <i className="fa fa-times" />
-                                                                            </button>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            ))
-                                                        }
+                                                        {productList.map((val, idx) => (
+                                                            <tr key={idx}>
+                                                                <td>{idx + 1}</td>
+                                                                <td>{val.pName}</td>
+                                                                <td>{val.stock}</td>
+                                                                <td>{val.price}</td>
+                                                                <td>
+                                                                    <img
+                                                                        src={val.image?.url || "https://via.placeholder.com/50"}
+                                                                        alt={val.pName?.name || "product"}
+                                                                        className="img-thumbnail"
+                                                                        style={{ width: "100px", height: "100px"}}
+                                                                    />
+                                                                </td>
+                                                                <td>{val.content}</td>
+                                                                <td>{val.options.join(", ")}</td>
+                                                                <td>
+                                                                    <div className="form-button-action">
+                                                                        <button
+                                                                            type="button"
+                                                                            data-bs-toggle="tooltip"
+                                                                            title
+                                                                            className="btn btn-link btn-primary btn-lg"
+                                                                            data-original-title="Edit Task"
+                                                                            onClick={() => handleEdit(val.id)}
+                                                                        >
+                                                                            <i className="fa fa-edit" />
+                                                                        </button>
+                                                                        <button
+                                                                            type="button"
+                                                                            data-bs-toggle="tooltip"
+                                                                            title
+                                                                            className="btn btn-link btn-danger"
+                                                                            data-original-title="Remove"
+                                                                            onClick={() => handleDelete(val.id)}
+                                                                        >
+                                                                            <i className="fa fa-times" />
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -195,90 +246,37 @@ function Table({ products, handleDelete, handleEdit }) {
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#"> Help </a>
+                                        <a className="nav-link" href="#">
+                                            {" "}
+                                            Help{" "}
+                                        </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#"> Licenses </a>
+                                        <a className="nav-link" href="#">
+                                            {" "}
+                                            Licenses{" "}
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>
                             <div className="copyright">
-                                2024, made with <i className="fa fa-heart heart text-danger" /> by
-                                <a href="http://www.themekita.com">ThemeKita</a>
+                                2025, made with <i className="fa fa-heart heart text-danger" />{" "}
+                                by
+                                <a href="https://github.com/Bhargavbhimani229">Bhargav</a>
                             </div>
                             <div>
                                 Distributed by
-                                <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+                                <a target="_blank" href="https://themewagon.com/">
+                                    ThemeWagon
+                                </a>
+                                .
                             </div>
                         </div>
                     </footer>
                 </div>
-                {/* Custom template | don't include it in your project! */}
-                <div className="custom-template">
-                    <div className="title">Settings</div>
-                    <div className="custom-content">
-                        <div className="switcher">
-                            <div className="switch-block">
-                                <h4>Logo Header</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="selected changeLogoHeaderColor" data-color="dark" />
-                                    <button type="button" className="selected changeLogoHeaderColor" data-color="blue" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="purple" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="light-blue" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="green" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="orange" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="red" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="white" />
-                                    <br />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="dark2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="blue2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="purple2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="light-blue2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="green2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="orange2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="red2" />
-                                </div>
-                            </div>
-                            <div className="switch-block">
-                                <h4>Navbar Header</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="changeTopBarColor" data-color="dark" />
-                                    <button type="button" className="changeTopBarColor" data-color="blue" />
-                                    <button type="button" className="changeTopBarColor" data-color="purple" />
-                                    <button type="button" className="changeTopBarColor" data-color="light-blue" />
-                                    <button type="button" className="changeTopBarColor" data-color="green" />
-                                    <button type="button" className="changeTopBarColor" data-color="orange" />
-                                    <button type="button" className="changeTopBarColor" data-color="red" />
-                                    <button type="button" className="changeTopBarColor" data-color="white" />
-                                    <br />
-                                    <button type="button" className="changeTopBarColor" data-color="dark2" />
-                                    <button type="button" className="selected changeTopBarColor" data-color="blue2" />
-                                    <button type="button" className="changeTopBarColor" data-color="purple2" />
-                                    <button type="button" className="changeTopBarColor" data-color="light-blue2" />
-                                    <button type="button" className="changeTopBarColor" data-color="green2" />
-                                    <button type="button" className="changeTopBarColor" data-color="orange2" />
-                                    <button type="button" className="changeTopBarColor" data-color="red2" />
-                                </div>
-                            </div>
-                            <div className="switch-block">
-                                <h4>Sidebar</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="selected changeSideBarColor" data-color="white" />
-                                    <button type="button" className="changeSideBarColor" data-color="dark" />
-                                    <button type="button" className="changeSideBarColor" data-color="dark2" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="custom-toggle">
-                        <i className="icon-settings" />
-                    </div>
-                </div>
-                {/* End Custom template */}
             </div>
-
         </>
-    )
-}
+    );
+};
 
-export default Table
+export default Table;

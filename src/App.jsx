@@ -1,146 +1,151 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Home from './pages/Home';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import Form from './pages/Form';
-import Table from './pages/Table';
-import axios from 'axios';
+import React, { useEffect, useRef, useState } from "react";
+import Home from "./pages/Home";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Form from "./pages/Form";
+import Table from "./pages/Table";
+import axios from "axios";
 
-
-function App() {
+const App = () => {
   const [product, setProduct] = useState({});
-  const [products, setProducts] = useState([]);
-  const [warehouse, setWarehouse] = useState([]);
+  const [productList, setProductList] = useState([]);
+  const [options, setOption] = useState([]);
+  const [isEdit, setEdit] = useState(0);
   const [error, setError] = useState({});
-  const imgRef = useRef();
+  const imageRef = useRef(null);
+  const navigator = useNavigate();
 
-  const navigation = useNavigate();
-
-  const URL = 'http://localhost:3000/product'
-
+  const URL = "http://localhost:3000/Product";
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const responce = await axios.get(URL);
-        setProducts(responce.data);
-      } catch (error) {
-        console.log('Error fetching products:', error);
-      }
-    }
-    fetchProduct();
+    axios
+      .get(URL)
+      .then((res) => setProductList(res.data))
+      .catch((err) => console.error("Fetch error:", err));
   }, []);
 
   const handleChange = (e) => {
     const { name, value, checked, files } = e.target;
 
-    // Handle warehouse checkboxes
-    if (name === 'warehouse') {
-      let newWarehouse = [...warehouse];
-
+    if (name === "options") {
+      let newList = [...options];
       if (checked) {
-        newWarehouse.push(value);
+        newList.push(value);
       } else {
-        newWarehouse = newWarehouse.filter((item) => item !== value);
+        newList = newList.filter((item) => item !== value);
       }
-
-      setWarehouse(newWarehouse);
-      setProduct({ ...product, warehouse: newWarehouse });
-      return;
-    }
-
-    // Handle image upload
-    if (name === 'image') {
+      setOption(newList);
+      setProduct({ ...product, options: newList });
+    } else if (name === "image") {
       const file = files[0];
-
-      if (file) {
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-          const imageData = {
-            name: file.name,
-            type: file.type,
-            url: reader.result,
-          };
-
-          setProduct({ ...product, image: imageData });
-          console.log('Image uploaded:', imageData);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const imageData = {
+          name: file.name,
+          type: file.type,
+          url: reader.result,
         };
-
-        reader.readAsDataURL(file);
-      }
-      return;
+        setProduct({ ...product, image: imageData });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setProduct({ ...product, [name]: value });
     }
-    setProduct({ ...product, [name]: value });
   };
 
-  const validateForm = () => {
+  const validation = () => {
     const errors = {};
-    if (!product.name) errors.name = 'Product name is required';
-    if (!product.price || isNaN(product.price)) errors.price = 'Valid price is required';
-    if (!product.stock) errors.stock = 'Stock is required';
-    if (!product.image) errors.image = 'Image is required';
-    if (!product.discription) errors.discription = 'Description is required';
-    if (!product.warehouse || product.warehouse.length === 0) errors.warehouse = 'At least one warehouse must be selected';
+    if (!product.pName) errors.pName = "Product name is required";
+    if (!product.stock) errors.stock = "Stock is required";
+    if (!product.price) errors.price = "Price is required";
+    if (!product.image) errors.image = "Image is required";
+    if (!product.content) errors.content = "Content is required";
+    if (!product.options || product.options.length === 0)
+      errors.options = "Options are required";
 
     setError(errors);
     return Object.keys(errors).length === 0;
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validation()) return;
 
-    if (!validateForm()) {
-      return;
-    }
-
-    try {
-      if (product.id) {
-        await axios.put(`${URL}/${product.id}`, product);
-        console.log('Product updated:', product);
-        const updatedProducts = products.map((p) => (p.id === product.id ? product : p));
-        setProducts(updatedProducts);
-      } else {
-        const response = await axios.post(URL, { ...product, id: Date.now() });
-        console.log('Product saved:', response.data);
-        setProduct(response.data);
-        setProducts([...products, response.data]);
+    if (isEdit) {
+      try {
+        await axios.put(`${URL}/${isEdit}`, { ...product, id: isEdit });
+        const res = await axios.get(URL);
+        setProductList(res.data);
+        setEdit(0);
+      } catch (err) {
+        console.error("Update error:", err);
       }
-      setProduct({});
-      setWarehouse([]);
-      imgRef.current.value = '';
-    } catch (error) {
-      console.log('Error saving product:', error);
+    } else {
+      try {
+        await axios.post(URL, { ...product });
+        const res = await axios.get(URL);
+        setProductList(res.data);
+      } catch (err) {
+        console.error("Create error:", err);
+      }
     }
-  };
 
-  useEffect(() => {
-    console.log('Products updated:', products);
-  }, [products]);
+    setProduct({});
+    setOption([]);
+    setError({});
+    imageRef.current.value = "";
+  };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${URL}/${id}`);
-      console.log('Product deleted:', id);
-      const updatedProducts = products.filter((product) => product.id !== id);
-      setProducts(updatedProducts);
-    } catch (error) {
-      console.log('Error deleting product:', error);
+      const res = await axios.get(URL);
+      setProductList(res.data);
+    } catch (err) {
+      console.error("Delete error:", err);
     }
   };
 
-  const handleEdit = (id) => {
-    const productToEdit = products.find((product) => product.id === id);
-    setProduct(productToEdit);
-    setWarehouse(productToEdit.warehouse || []);
-    navigation('/form');
-  }
+  const handleEdit = async (id) => {
+    try {
+      const res = await axios.get(`${URL}/${id}`);
+      setProduct(res.data);
+      setOption(res.data.options || []);
+      setEdit(id);
+      navigator("/form");
+    } catch (err) {
+      console.error("Edit fetch error:", err);
+    }
+  };
 
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/form" element={<Form handleChange={handleChange} product={product} handleSubmit={handleSubmit} imgRef={imgRef} error={error} />} />
-      <Route path="/table" element={<Table products={products} handleDelete={handleDelete} handleEdit={handleEdit} />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/form"
+          element={
+            <Form
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              product={product}
+              options={options}
+              imageRef={imageRef}
+              error={error}
+            />
+          }
+        />
+        <Route
+          path="/table"
+          element={
+            <Table
+              productList={productList}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
+          }
+        />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;

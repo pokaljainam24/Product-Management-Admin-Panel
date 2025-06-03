@@ -1,22 +1,32 @@
-import React from 'react'
-import Aside from '../components/Aside'
-import Header from '../components/Header'
+import React, { useState } from "react";
+import Aside from "../components/Aside";
+import Header from "../components/Header";
 
-function Form({ handleChange, product, checked, handleSubmit, imgRef, error }) {
+const Form = ({
+    handleSubmit,
+    handleChange,
+    product,
+    options,
+    imageRef,
+    error,
+}) => {
     return (
         <>
             <div className="wrapper">
                 {/* Sidebar */}
                 <Aside />
                 {/* End Sidebar */}
-                {/*  */}
                 <div className="main-panel">
                     <div className="main-header">
                         <div className="main-header-logo">
                             {/* Logo Header */}
                             <div className="logo-header" data-background-color="dark">
                                 <a href="../index.html" className="logo">
-                                    <img src="../assets/img/kaiadmin/logo_light.svg" alt="navbar brand" className="navbar-brand" />
+                                    <img
+                                        src="../assets/img/kaiadmin/logo_light.svg"
+                                        alt="navbar brand"
+                                        className="navbar-brand"
+                                    />
                                 </a>
                                 <div className="nav-toggle">
                                     <button className="btn btn-toggle toggle-sidebar">
@@ -65,78 +75,174 @@ function Form({ handleChange, product, checked, handleSubmit, imgRef, error }) {
                                     <form action="" method="post" onSubmit={handleSubmit}>
                                         <div className="card">
                                             <div className="card-header">
-                                                <div className="card-title">Product Form</div>
+                                                <div className="card-title">Form Elements</div>
                                             </div>
+                                            <div className="card-body">
+                                                <div className="row">
+                                                    <div className="col-md-6 col-lg-6">
+                                                        <div className="form-group">
+                                                            <label htmlFor="product-name">Product Name</label>
+                                                            <input
+                                                                type="text"
+                                                                onChange={handleChange}
+                                                                value={product.pName || ""}
+                                                                className="form-control"
+                                                                id="pName"
+                                                                name="pName"
+                                                                placeholder="Enter Product Name"
+                                                            />
+                                                            {error.pName && (
+                                                                <span className="text-danger">
+                                                                    {error.pName}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="stock">Product Stock</label>
+                                                            <input
+                                                                type="number"
+                                                                onChange={handleChange}
+                                                                value={product.stock || ""}
+                                                                className="form-control"
+                                                                id="stock"
+                                                                name="stock"
+                                                                placeholder="Enter Product stock"
+                                                            />
+                                                            {error.stock && (
+                                                                <span className="text-danger">
+                                                                    {error.stock}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="product-price">
+                                                                Product Price
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                onChange={handleChange}
+                                                                value={product.price || ""}
+                                                                className="form-control"
+                                                                id="price"
+                                                                name="price"
+                                                                placeholder="Enter Product price"
+                                                            />
+                                                            {error.price && (
+                                                                <span className="text-danger">
+                                                                    {error.price}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label>Image</label>
+                                                            <input
+                                                                type="file"
+                                                                onChange={handleChange || ""}
+                                                                ref={imageRef}
+                                                                className="form-control"
+                                                                id="image"
+                                                                name="image"
+                                                                placeholder="Enter Product Image"
+                                                            />
+                                                            {error.image && (
+                                                                <span className="text-danger">
+                                                                    {error.image}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label htmlFor="content">Content</label>
+                                                            <textarea
+                                                                className="form-control"
+                                                                onChange={handleChange}
+                                                                value={product.content || ""}
+                                                                id="content"
+                                                                name="content"
+                                                                placeholder="Enter Product content"
+                                                            />
+                                                            {error.content && (
+                                                                <span className="text-danger">
+                                                                    {error.content}
+                                                                </span>
+                                                            )}
+                                                        </div>
 
-                                            {/* Product Name */}
-                                            <div className="col-md-6 col-lg-8">
-                                                <div className="form-group">
-                                                    <label htmlFor="productName">Product Name</label>
-                                                    <input type="text" className="form-control" name="name" onChange={handleChange} value={product.name || ""} id="productName" placeholder="Enter Product Name" />
-                                                    {error.name && <div className="text-danger">{error.name}</div>}
+                                                        {console.log("test", product)}
+
+                                                        {/* checkbox */}
+                                                        <div className="form-group">
+                                                            <label>Product Options</label> <br />
+                                                            {error.options && (
+                                                                <span className="text-danger">
+                                                                    {error.options}
+                                                                </span>
+                                                            )}
+
+                                                            <div className="d-flex gap-1 mt-2">
+                                                                <div className="form-check">
+                                                                    <input
+                                                                        onChange={handleChange}
+                                                                        className="form-check-input"
+                                                                        type="checkbox"
+                                                                        id="featured"
+                                                                        name="options"
+                                                                        value="Surat"
+                                                                        checked={options.includes("Surat")}
+                                                                    />
+                                                                    <label className="form-check-label" htmlFor="featured">
+                                                                        Surat
+                                                                    </label>
+                                                                </div>
+                                                                <div className="form-check">
+                                                                    <input
+                                                                        className="form-check-input"
+                                                                        onChange={handleChange}
+                                                                        type="checkbox"
+                                                                        id="new-arrival"
+                                                                        name="options"
+                                                                        value="Rajkot"
+                                                                        checked={options.includes("Rajkot")}
+                                                                    />
+                                                                    <label className="form-check-label" htmlFor="new-arrival">
+                                                                        Rajkot
+                                                                    </label>
+                                                                </div>
+                                                                <div className="form-check">
+                                                                    <input
+                                                                        className="form-check-input"
+                                                                        type="checkbox"
+                                                                        onChange={handleChange}
+                                                                        id="on-sale"
+                                                                        name="options"
+                                                                        value="Navsari"
+                                                                        checked={options.includes("Navsari")}
+                                                                    />
+                                                                    <label className="form-check-label" htmlFor="on-sale">
+                                                                        Navsari
+                                                                    </label>
+                                                                </div>
+                                                                <div className="form-check">
+                                                                    <input
+                                                                        className="form-check-input"
+                                                                        type="checkbox"
+                                                                        onChange={handleChange}
+                                                                        id="on-sale"
+                                                                        name="options"
+                                                                        value="Ahemdabad"
+                                                                        checked={options.includes("Ahemdabad")}
+                                                                    />
+                                                                    <label className="form-check-label" htmlFor="on-sale">
+                                                                        Ahemdabad
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            {/* Product Price */}
-                                            <div className="col-md-6 col-lg-8">
-                                                <div className="form-group">
-                                                    <label htmlFor="productPrice">Product Price</label>
-                                                    <input type="number" className="form-control" name="price" onChange={handleChange} value={product.price || ""} id="productPrice" placeholder="Enter Product Price" />
-                                                    {error.price && <div className="text-danger">{error.price}</div>}
-                                                </div>
-                                            </div>
-
-                                            {/* Product Stock */}
-                                            <div className="col-md-6 col-lg-8">
-                                                <div className="form-group">
-                                                    <label htmlFor="productStock">Product Stock</label>
-                                                    <input type="number" className="form-control" name="stock" onChange={handleChange} value={product.stock || ""} id="productStock" placeholder="Enter Stock Quantity" />
-                                                    {error.stock && <div className="text-danger">{error.stock}</div>}
-                                                </div>
-                                            </div>
-
-                                            {/* Product Image */}
-                                            <div className="col-md-6 col-lg-8">
-                                                <div className="form-group">
-                                                    <label htmlFor="productImage">Product Image</label>
-                                                    <input type="file" className="form-control" name="image" onChange={handleChange} id="productImage" ref={imgRef} />
-                                                    {error.image && <div className="text-danger">{error.image}</div>}
-                                                </div>
-                                            </div>
-                                            
-
-                                            {/* Description */}
-                                            <div className="form-group col-md-8 me-3">
-                                                <label htmlFor="productDescription">Product Description</label>
-                                                <textarea className="form-control" name="discription" value={product.discription || ""} onChange={handleChange} id="productDescription" rows="5" placeholder="Enter Product Description"></textarea>
-                                                {error.discription && <div className="text-danger">{error.discription}</div>}
-                                            </div>
-
-                                            {/* Warehouse Checkboxes */}
-                                            <div className="form-group col-md-8 ">
-                                                <label>Select Warehouses</label> <br />
-                                                {error.warehouse && <div className="text-danger">{error.warehouse}</div>}
-                                                <div className="form-check-inline">
-                                                    <input className="form-check-input me-2" name='warehouse' type="checkbox" checked={product.warehouse?.includes("Navsari")} value="Navsari" onChange={handleChange} />
-                                                    <label className="form-check-label" htmlFor="Warehouse">Navsari</label>
-                                                </div>
-                                                <div className="form-check-inline">
-                                                    <input className="form-check-input me-2" name='warehouse' type="checkbox" checked={product.warehouse?.includes("Surat")} value="Surat" onChange={handleChange} />
-                                                    <label className="form-check-label" htmlFor="Warehouse">Surat</label>
-                                                </div>
-                                                <div className="form-check-inline">
-                                                    <input className="form-check-input me-2" name='warehouse' type="checkbox" checked={product.warehouse?.includes("Ahemdabad")} value="Ahemdabad" onChange={handleChange} />
-                                                    <label className="form-check-label" htmlFor="Warehouse">Ahemdabad</label>
-                                                </div>
-                                                <div className="form-check-inline">
-                                                    <input className="form-check-input me-2" name='warehouse' type="checkbox" checked={product.warehouse?.includes("Bardoli")} value="Bardoli" onChange={handleChange} />
-                                                    <label className="form-check-label" htmlFor="Warehouse">Bardoli</label>
-                                                </div>
-                                            </div>
-
-
-                                            <div className="card-action d-flex gap-2">
-                                                <button className="btn btn-success">Submit</button>
+                                            <div className="card-action">
+                                                <button className="btn btn-success">Submit</button>{" "}
                                                 <button className="btn btn-danger">Cancel</button>
                                             </div>
                                         </div>
@@ -155,89 +261,37 @@ function Form({ handleChange, product, checked, handleSubmit, imgRef, error }) {
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#"> Help </a>
+                                        <a className="nav-link" href="#">
+                                            {" "}
+                                            Help{" "}
+                                        </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#"> Licenses </a>
+                                        <a className="nav-link" href="#">
+                                            {" "}
+                                            Licenses{" "}
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>
                             <div className="copyright">
-                                2024, made with <i className="fa fa-heart heart text-danger" /> by
-                                <a href="http://www.themekita.com">ThemeKita</a>
+                                2025, made with <i className="fa fa-heart heart text-danger" />{" "}
+                                by
+                                <a href="https://github.com/Bhargavbhimani229">Bhargav</a>
                             </div>
                             <div>
                                 Distributed by
-                                <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+                                <a target="_blank" href="https://themewagon.com/">
+                                    ThemeWagon
+                                </a>
+                                .
                             </div>
                         </div>
                     </footer>
                 </div>
-                {/* Custom template | don't include it in your project! */}
-                <div className="custom-template">
-                    <div className="title">Settings</div>
-                    <div className="custom-content">
-                        <div className="switcher">
-                            <div className="switch-block">
-                                <h4>Logo Header</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="selected changeLogoHeaderColor" data-color="dark" />
-                                    <button type="button" className="selected changeLogoHeaderColor" data-color="blue" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="purple" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="light-blue" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="green" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="orange" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="red" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="white" />
-                                    <br />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="dark2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="blue2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="purple2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="light-blue2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="green2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="orange2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="red2" />
-                                </div>
-                            </div>
-                            <div className="switch-block">
-                                <h4>Navbar Header</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="changeTopBarColor" data-color="dark" />
-                                    <button type="button" className="changeTopBarColor" data-color="blue" />
-                                    <button type="button" className="changeTopBarColor" data-color="purple" />
-                                    <button type="button" className="changeTopBarColor" data-color="light-blue" />
-                                    <button type="button" className="changeTopBarColor" data-color="green" />
-                                    <button type="button" className="changeTopBarColor" data-color="orange" />
-                                    <button type="button" className="changeTopBarColor" data-color="red" />
-                                    <button type="button" className="changeTopBarColor" data-color="white" />
-                                    <br />
-                                    <button type="button" className="changeTopBarColor" data-color="dark2" />
-                                    <button type="button" className="selected changeTopBarColor" data-color="blue2" />
-                                    <button type="button" className="changeTopBarColor" data-color="purple2" />
-                                    <button type="button" className="changeTopBarColor" data-color="light-blue2" />
-                                    <button type="button" className="changeTopBarColor" data-color="green2" />
-                                    <button type="button" className="changeTopBarColor" data-color="orange2" />
-                                    <button type="button" className="changeTopBarColor" data-color="red2" />
-                                </div>
-                            </div>
-                            <div className="switch-block">
-                                <h4>Sidebar</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="selected changeSideBarColor" data-color="white" />
-                                    <button type="button" className="changeSideBarColor" data-color="dark" />
-                                    <button type="button" className="changeSideBarColor" data-color="dark2" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="custom-toggle">
-                        <i className="icon-settings" />
-                    </div>
-                </div>
-                {/* End Custom template */}
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Form
+export default Form;

@@ -1,9 +1,8 @@
-import React from 'react'
-import Aside from '../components/Aside'
-import Header from '../components/Header'
+import React from "react";
+import Aside from "../components/Aside";
+import Header from "../components/Header";
 
-
-function Home() {
+const Home = () => {
     return (
         <>
             <div className="wrapper">
@@ -16,7 +15,12 @@ function Home() {
                             {/* Logo Header */}
                             <div className="logo-header" data-background-color="dark">
                                 <a href="index.html" className="logo">
-                                    <img src="assets/img/kaiadmin/logo_light.svg" alt="navbar brand" className="navbar-brand" height={20} />
+                                    <img
+                                        src="assets/img/kaiadmin/logo_light.svg"
+                                        alt="navbar brand"
+                                        className="navbar-brand"
+                                        height={20}
+                                    />
                                 </a>
                                 <div className="nav-toggle">
                                     <button className="btn btn-toggle toggle-sidebar">
@@ -41,11 +45,17 @@ function Home() {
                             <div className="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
                                 <div>
                                     <h3 className="fw-bold mb-3">Dashboard</h3>
-                                    <h6 className="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
+                                    <h6 className="op-7 mb-2">
+                                        Free Bootstrap 5 Admin Dashboard
+                                    </h6>
                                 </div>
                                 <div className="ms-md-auto py-2 py-md-0">
-                                    <a href="#" className="btn btn-label-info btn-round me-2">Manage</a>
-                                    <a href="#" className="btn btn-primary btn-round">Add Customer</a>
+                                    <a href="#" className="btn btn-label-info btn-round me-2">
+                                        Manage
+                                    </a>
+                                    <a href="#" className="btn btn-primary btn-round">
+                                        Add Customer
+                                    </a>
                                 </div>
                             </div>
                             <div className="row">
@@ -133,13 +143,19 @@ function Home() {
                                             <div className="card-head-row">
                                                 <div className="card-title">User Statistics</div>
                                                 <div className="card-tools">
-                                                    <a href="#" className="btn btn-label-success btn-round btn-sm me-2">
+                                                    <a
+                                                        href="#"
+                                                        className="btn btn-label-success btn-round btn-sm me-2"
+                                                    >
                                                         <span className="btn-label">
                                                             <i className="fa fa-pencil" />
                                                         </span>
                                                         Export
                                                     </a>
-                                                    <a href="#" className="btn btn-label-info btn-round btn-sm">
+                                                    <a
+                                                        href="#"
+                                                        className="btn btn-label-info btn-round btn-sm"
+                                                    >
                                                         <span className="btn-label">
                                                             <i className="fa fa-print" />
                                                         </span>
@@ -149,7 +165,10 @@ function Home() {
                                             </div>
                                         </div>
                                         <div className="card-body">
-                                            <div className="chart-container" style={{ minHeight: 375 }}>
+                                            <div
+                                                className="chart-container"
+                                                style={{ minHeight: 375 }}
+                                            >
                                                 <canvas id="statisticsChart" />
                                             </div>
                                             <div id="myChartLegend" />
@@ -163,13 +182,29 @@ function Home() {
                                                 <div className="card-title">Daily Sales</div>
                                                 <div className="card-tools">
                                                     <div className="dropdown">
-                                                        <button className="btn btn-sm btn-label-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <button
+                                                            className="btn btn-sm btn-label-light dropdown-toggle"
+                                                            type="button"
+                                                            id="dropdownMenuButton"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-haspopup="true"
+                                                            aria-expanded="false"
+                                                        >
                                                             Export
                                                         </button>
-                                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a className="dropdown-item" href="#">Action</a>
-                                                            <a className="dropdown-item" href="#">Another action</a>
-                                                            <a className="dropdown-item" href="#">Something else here</a>
+                                                        <div
+                                                            className="dropdown-menu"
+                                                            aria-labelledby="dropdownMenuButton"
+                                                        >
+                                                            <a className="dropdown-item" href="#">
+                                                                Action
+                                                            </a>
+                                                            <a className="dropdown-item" href="#">
+                                                                Another action
+                                                            </a>
+                                                            <a className="dropdown-item" href="#">
+                                                                Something else here
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -187,7 +222,9 @@ function Home() {
                                     </div>
                                     <div className="card card-round">
                                         <div className="card-body pb-0">
-                                            <div className="h1 fw-bold float-end text-primary">+5%</div>
+                                            <div className="h1 fw-bold float-end text-primary">
+                                                +5%
+                                            </div>
                                             <h2 className="mb-2">17</h2>
                                             <p className="text-muted">Users online</p>
                                             <div className="pull-in sparkline-fix">
@@ -228,7 +265,10 @@ function Home() {
                                                                 <tr>
                                                                     <td>
                                                                         <div className="flag">
-                                                                            <img src="assets/img/flags/id.png" alt="indonesia" />
+                                                                            <img
+                                                                                src="assets/img/flags/id.png"
+                                                                                alt="indonesia"
+                                                                            />
                                                                         </div>
                                                                     </td>
                                                                     <td>Indonesia</td>
@@ -238,7 +278,10 @@ function Home() {
                                                                 <tr>
                                                                     <td>
                                                                         <div className="flag">
-                                                                            <img src="assets/img/flags/us.png" alt="united states" />
+                                                                            <img
+                                                                                src="assets/img/flags/us.png"
+                                                                                alt="united states"
+                                                                            />
                                                                         </div>
                                                                     </td>
                                                                     <td>USA</td>
@@ -248,7 +291,10 @@ function Home() {
                                                                 <tr>
                                                                     <td>
                                                                         <div className="flag">
-                                                                            <img src="assets/img/flags/au.png" alt="australia" />
+                                                                            <img
+                                                                                src="assets/img/flags/au.png"
+                                                                                alt="australia"
+                                                                            />
                                                                         </div>
                                                                     </td>
                                                                     <td>Australia</td>
@@ -258,7 +304,10 @@ function Home() {
                                                                 <tr>
                                                                     <td>
                                                                         <div className="flag">
-                                                                            <img src="assets/img/flags/ru.png" alt="russia" />
+                                                                            <img
+                                                                                src="assets/img/flags/ru.png"
+                                                                                alt="russia"
+                                                                            />
                                                                         </div>
                                                                     </td>
                                                                     <td>Russia</td>
@@ -268,7 +317,10 @@ function Home() {
                                                                 <tr>
                                                                     <td>
                                                                         <div className="flag">
-                                                                            <img src="assets/img/flags/cn.png" alt="china" />
+                                                                            <img
+                                                                                src="assets/img/flags/cn.png"
+                                                                                alt="china"
+                                                                            />
                                                                         </div>
                                                                     </td>
                                                                     <td>China</td>
@@ -278,7 +330,10 @@ function Home() {
                                                                 <tr>
                                                                     <td>
                                                                         <div className="flag">
-                                                                            <img src="assets/img/flags/br.png" alt="brazil" />
+                                                                            <img
+                                                                                src="assets/img/flags/br.png"
+                                                                                alt="brazil"
+                                                                            />
                                                                         </div>
                                                                     </td>
                                                                     <td>Brasil</td>
@@ -291,7 +346,11 @@ function Home() {
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="mapcontainer">
-                                                        <div id="world-map" className="w-100" style={{ height: 300 }} />
+                                                        <div
+                                                            id="world-map"
+                                                            className="w-100"
+                                                            style={{ height: 300 }}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -307,13 +366,29 @@ function Home() {
                                                 <div className="card-title">New Customers</div>
                                                 <div className="card-tools">
                                                     <div className="dropdown">
-                                                        <button className="btn btn-icon btn-clean me-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <button
+                                                            className="btn btn-icon btn-clean me-0"
+                                                            type="button"
+                                                            id="dropdownMenuButton"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-haspopup="true"
+                                                            aria-expanded="false"
+                                                        >
                                                             <i className="fas fa-ellipsis-h" />
                                                         </button>
-                                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a className="dropdown-item" href="#">Action</a>
-                                                            <a className="dropdown-item" href="#">Another action</a>
-                                                            <a className="dropdown-item" href="#">Something else here</a>
+                                                        <div
+                                                            className="dropdown-menu"
+                                                            aria-labelledby="dropdownMenuButton"
+                                                        >
+                                                            <a className="dropdown-item" href="#">
+                                                                Action
+                                                            </a>
+                                                            <a className="dropdown-item" href="#">
+                                                                Another action
+                                                            </a>
+                                                            <a className="dropdown-item" href="#">
+                                                                Something else here
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -321,7 +396,11 @@ function Home() {
                                             <div className="card-list py-4">
                                                 <div className="item-list">
                                                     <div className="avatar">
-                                                        <img src="assets/img/jm_denis.jpg" alt="..." className="avatar-img rounded-circle" />
+                                                        <img
+                                                            src="assets/img/jm_denis.jpg"
+                                                            alt="..."
+                                                            className="avatar-img rounded-circle"
+                                                        />
                                                     </div>
                                                     <div className="info-user ms-3">
                                                         <div className="username">Jimmy Denis</div>
@@ -336,7 +415,9 @@ function Home() {
                                                 </div>
                                                 <div className="item-list">
                                                     <div className="avatar">
-                                                        <span className="avatar-title rounded-circle border border-white">CF</span>
+                                                        <span className="avatar-title rounded-circle border border-white">
+                                                            CF
+                                                        </span>
                                                     </div>
                                                     <div className="info-user ms-3">
                                                         <div className="username">Chandra Felix</div>
@@ -351,7 +432,11 @@ function Home() {
                                                 </div>
                                                 <div className="item-list">
                                                     <div className="avatar">
-                                                        <img src="assets/img/talha.jpg" alt="..." className="avatar-img rounded-circle" />
+                                                        <img
+                                                            src="assets/img/talha.jpg"
+                                                            alt="..."
+                                                            className="avatar-img rounded-circle"
+                                                        />
                                                     </div>
                                                     <div className="info-user ms-3">
                                                         <div className="username">Talha</div>
@@ -366,7 +451,11 @@ function Home() {
                                                 </div>
                                                 <div className="item-list">
                                                     <div className="avatar">
-                                                        <img src="assets/img/chadengle.jpg" alt="..." className="avatar-img rounded-circle" />
+                                                        <img
+                                                            src="assets/img/chadengle.jpg"
+                                                            alt="..."
+                                                            className="avatar-img rounded-circle"
+                                                        />
                                                     </div>
                                                     <div className="info-user ms-3">
                                                         <div className="username">Chad</div>
@@ -381,7 +470,9 @@ function Home() {
                                                 </div>
                                                 <div className="item-list">
                                                     <div className="avatar">
-                                                        <span className="avatar-title rounded-circle border border-white bg-primary">H</span>
+                                                        <span className="avatar-title rounded-circle border border-white bg-primary">
+                                                            H
+                                                        </span>
                                                     </div>
                                                     <div className="info-user ms-3">
                                                         <div className="username">Hizrian</div>
@@ -396,7 +487,9 @@ function Home() {
                                                 </div>
                                                 <div className="item-list">
                                                     <div className="avatar">
-                                                        <span className="avatar-title rounded-circle border border-white bg-secondary">F</span>
+                                                        <span className="avatar-title rounded-circle border border-white bg-secondary">
+                                                            F
+                                                        </span>
                                                     </div>
                                                     <div className="info-user ms-3">
                                                         <div className="username">Farrah</div>
@@ -420,13 +513,29 @@ function Home() {
                                                 <div className="card-title">Transaction History</div>
                                                 <div className="card-tools">
                                                     <div className="dropdown">
-                                                        <button className="btn btn-icon btn-clean me-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <button
+                                                            className="btn btn-icon btn-clean me-0"
+                                                            type="button"
+                                                            id="dropdownMenuButton"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-haspopup="true"
+                                                            aria-expanded="false"
+                                                        >
                                                             <i className="fas fa-ellipsis-h" />
                                                         </button>
-                                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a className="dropdown-item" href="#">Action</a>
-                                                            <a className="dropdown-item" href="#">Another action</a>
-                                                            <a className="dropdown-item" href="#">Something else here</a>
+                                                        <div
+                                                            className="dropdown-menu"
+                                                            aria-labelledby="dropdownMenuButton"
+                                                        >
+                                                            <a className="dropdown-item" href="#">
+                                                                Action
+                                                            </a>
+                                                            <a className="dropdown-item" href="#">
+                                                                Another action
+                                                            </a>
+                                                            <a className="dropdown-item" href="#">
+                                                                Something else here
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -439,9 +548,15 @@ function Home() {
                                                     <thead className="thead-light">
                                                         <tr>
                                                             <th scope="col">Payment Number</th>
-                                                            <th scope="col" className="text-end">Date &amp; Time</th>
-                                                            <th scope="col" className="text-end">Amount</th>
-                                                            <th scope="col" className="text-end">Status</th>
+                                                            <th scope="col" className="text-end">
+                                                                Date &amp; Time
+                                                            </th>
+                                                            <th scope="col" className="text-end">
+                                                                Amount
+                                                            </th>
+                                                            <th scope="col" className="text-end">
+                                                                Status
+                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -455,7 +570,9 @@ function Home() {
                                                             <td className="text-end">Mar 19, 2020, 2.45pm</td>
                                                             <td className="text-end">$250.00</td>
                                                             <td className="text-end">
-                                                                <span className="badge badge-success">Completed</span>
+                                                                <span className="badge badge-success">
+                                                                    Completed
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -468,7 +585,9 @@ function Home() {
                                                             <td className="text-end">Mar 19, 2020, 2.45pm</td>
                                                             <td className="text-end">$250.00</td>
                                                             <td className="text-end">
-                                                                <span className="badge badge-success">Completed</span>
+                                                                <span className="badge badge-success">
+                                                                    Completed
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -481,7 +600,9 @@ function Home() {
                                                             <td className="text-end">Mar 19, 2020, 2.45pm</td>
                                                             <td className="text-end">$250.00</td>
                                                             <td className="text-end">
-                                                                <span className="badge badge-success">Completed</span>
+                                                                <span className="badge badge-success">
+                                                                    Completed
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -494,7 +615,9 @@ function Home() {
                                                             <td className="text-end">Mar 19, 2020, 2.45pm</td>
                                                             <td className="text-end">$250.00</td>
                                                             <td className="text-end">
-                                                                <span className="badge badge-success">Completed</span>
+                                                                <span className="badge badge-success">
+                                                                    Completed
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -507,7 +630,9 @@ function Home() {
                                                             <td className="text-end">Mar 19, 2020, 2.45pm</td>
                                                             <td className="text-end">$250.00</td>
                                                             <td className="text-end">
-                                                                <span className="badge badge-success">Completed</span>
+                                                                <span className="badge badge-success">
+                                                                    Completed
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -520,7 +645,9 @@ function Home() {
                                                             <td className="text-end">Mar 19, 2020, 2.45pm</td>
                                                             <td className="text-end">$250.00</td>
                                                             <td className="text-end">
-                                                                <span className="badge badge-success">Completed</span>
+                                                                <span className="badge badge-success">
+                                                                    Completed
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -533,7 +660,9 @@ function Home() {
                                                             <td className="text-end">Mar 19, 2020, 2.45pm</td>
                                                             <td className="text-end">$250.00</td>
                                                             <td className="text-end">
-                                                                <span className="badge badge-success">Completed</span>
+                                                                <span className="badge badge-success">
+                                                                    Completed
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -555,89 +684,37 @@ function Home() {
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#"> Help </a>
+                                        <a className="nav-link" href="#">
+                                            {" "}
+                                            Help{" "}
+                                        </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#"> Licenses </a>
+                                        <a className="nav-link" href="#">
+                                            {" "}
+                                            Licenses{" "}
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>
                             <div className="copyright">
-                                2024, made with <i className="fa fa-heart heart text-danger" /> by
-                                <a href="http://www.themekita.com">ThemeKita</a>
+                                2025, made with <i className="fa fa-heart heart text-danger" />{" "}
+                                by
+                                <a href="https://github.com/Bhargavbhimani229">Bhargav</a>
                             </div>
                             <div>
                                 Distributed by
-                                <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+                                <a target="_blank" href="https://themewagon.com/">
+                                    ThemeWagon
+                                </a>
+                                .
                             </div>
                         </div>
                     </footer>
                 </div>
-                {/* Custom template | don't include it in your project! */}
-                <div className="custom-template">
-                    <div className="title">Settings</div>
-                    <div className="custom-content">
-                        <div className="switcher">
-                            <div className="switch-block">
-                                <h4>Logo Header</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="selected changeLogoHeaderColor" data-color="dark" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="blue" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="purple" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="light-blue" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="green" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="orange" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="red" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="white" />
-                                    <br />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="dark2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="blue2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="purple2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="light-blue2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="green2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="orange2" />
-                                    <button type="button" className="changeLogoHeaderColor" data-color="red2" />
-                                </div>
-                            </div>
-                            <div className="switch-block">
-                                <h4>Navbar Header</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="changeTopBarColor" data-color="dark" />
-                                    <button type="button" className="changeTopBarColor" data-color="blue" />
-                                    <button type="button" className="changeTopBarColor" data-color="purple" />
-                                    <button type="button" className="changeTopBarColor" data-color="light-blue" />
-                                    <button type="button" className="changeTopBarColor" data-color="green" />
-                                    <button type="button" className="changeTopBarColor" data-color="orange" />
-                                    <button type="button" className="changeTopBarColor" data-color="red" />
-                                    <button type="button" className="selected changeTopBarColor" data-color="white" />
-                                    <br />
-                                    <button type="button" className="changeTopBarColor" data-color="dark2" />
-                                    <button type="button" className="changeTopBarColor" data-color="blue2" />
-                                    <button type="button" className="changeTopBarColor" data-color="purple2" />
-                                    <button type="button" className="changeTopBarColor" data-color="light-blue2" />
-                                    <button type="button" className="changeTopBarColor" data-color="green2" />
-                                    <button type="button" className="changeTopBarColor" data-color="orange2" />
-                                    <button type="button" className="changeTopBarColor" data-color="red2" />
-                                </div>
-                            </div>
-                            <div className="switch-block">
-                                <h4>Sidebar</h4>
-                                <div className="btnSwitch">
-                                    <button type="button" className="changeSideBarColor" data-color="white" />
-                                    <button type="button" className="selected changeSideBarColor" data-color="dark" />
-                                    <button type="button" className="changeSideBarColor" data-color="dark2" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="custom-toggle">
-                        <i className="icon-settings" />
-                    </div>
-                </div>
-                {/* End Custom template */}
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
